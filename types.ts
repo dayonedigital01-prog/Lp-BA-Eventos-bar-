@@ -7,6 +7,7 @@ export interface LeadData {
   location: string;
   guests: number;
   date: string;
+  eventType: string;
 }
 
 export interface ServiceFeature {

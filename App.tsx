@@ -1,14 +1,11 @@
 
 import React, { useState, useRef } from 'react';
 import { 
-  Users, 
-  MapPin, 
   Calendar, 
   MessageSquare, 
   CheckCircle2, 
   ChevronRight, 
   Star,
-  Phone,
   Quote,
   Instagram,
   Facebook,
@@ -91,7 +88,8 @@ const App: React.FC = () => {
     whatsapp: '',
     location: '',
     guests: 0,
-    date: ''
+    date: '',
+    eventType: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
@@ -103,7 +101,7 @@ const App: React.FC = () => {
     formRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value, type } = e.target;
     setFormData(prev => ({ 
       ...prev, 
@@ -117,7 +115,7 @@ const App: React.FC = () => {
 
     try {
       const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
-      const prompt = `Aja como o mestre mixologista da BA Eventos de Maringá. Um cliente chamado ${formData.name} quer contratar o bar para um evento em ${formData.location} para ${formData.guests} convidados no dia ${formData.date}. 
+      const prompt = `Aja como o mestre mixologista da BA Eventos de Maringá. Um cliente chamado ${formData.name} quer contratar o bar para um(a) ${formData.eventType} em ${formData.location} para ${formData.guests} convidados no dia ${formData.date}. 
       Responda de forma extremamente empolgada, informal e carinhosa (em Português do Brasil). Fale brevemente (3 linhas) sobre como a nossa estrutura impecável, decoração exclusiva e a arte do nosso bartender vão transformar o evento dele em algo inesquecível. Termine dizendo que ele deve clicar no botão abaixo para fecharmos os detalhes agora mesmo.`;
       
       const result = await ai.models.generateContent({
@@ -142,6 +140,7 @@ const App: React.FC = () => {
       `Olá! Acabei de solicitar um orçamento no site e estou ansioso por um brinde épico!\n\n` +
       `*Meus dados:* \n` +
       `- *Nome:* ${formData.name}\n` +
+      `- *Tipo de Evento:* ${formData.eventType}\n` +
       `- *Local:* ${formData.location}\n` +
       `- *Convidados:* ${formData.guests}\n` +
       `- *Data:* ${formData.date}\n` +
@@ -195,7 +194,7 @@ const App: React.FC = () => {
               <Zap size={14} /> Mixologia de Elite em Maringá
             </div>
             
-            <h1 className="text-6xl sm:text-7xl lg:text-8xl font-bold leading-[0.9] text-white tracking-tighter mx-auto">
+            <h1 className="text-6xl sm:text-7xl lg:text-8xl font-bold leading-[1.2] text-white tracking-tighter">
               Redescubra o prazer <br />
               <span className="text-amber-500 italic">de beber</span>
             </h1>
@@ -288,6 +287,21 @@ const App: React.FC = () => {
                     onChange={handleInputChange}
                   />
 
+                  <select
+                    required
+                    name="eventType"
+                    className={`w-full bg-stone-950/50 border border-stone-800 rounded-2xl py-5 px-6 focus:outline-none focus:border-amber-500 transition-all appearance-none cursor-pointer ${formData.eventType ? 'text-stone-100' : 'text-stone-600'}`}
+                    value={formData.eventType}
+                    onChange={handleInputChange}
+                  >
+                    <option value="" disabled className="text-stone-600">Tipo de Evento</option>
+                    <option value="Casamento" className="bg-stone-900">Casamento</option>
+                    <option value="Aniversário" className="bg-stone-900">Aniversário</option>
+                    <option value="Corporativo" className="bg-stone-900">Corporativo</option>
+                    <option value="Formatura" className="bg-stone-900">Formatura</option>
+                    <option value="Outros" className="bg-stone-900">Outros</option>
+                  </select>
+
                   <div className="grid grid-cols-2 gap-4">
                     <input 
                       required
@@ -296,6 +310,7 @@ const App: React.FC = () => {
                       placeholder="Convidados" 
                       min="1"
                       className="w-full bg-stone-950/50 border border-stone-800 rounded-2xl py-5 px-6 text-stone-100 focus:outline-none focus:border-amber-500 transition-all placeholder:text-stone-600"
+                      value={formData.guests || ''}
                       onChange={handleInputChange}
                     />
                     <input 
