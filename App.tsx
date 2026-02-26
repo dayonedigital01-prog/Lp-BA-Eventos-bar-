@@ -114,7 +114,11 @@ const App: React.FC = () => {
     setIsSubmitting(true);
 
     try {
-      const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
+      const apiKey = process.env.GEMINI_API_KEY;
+      if (!apiKey) {
+        throw new Error("Chave de API (GEMINI_API_KEY) não configurada. Por favor, adicione-a nas variáveis de ambiente do Vercel.");
+      }
+      const ai = new GoogleGenAI({ apiKey });
       const prompt = `Aja como o mestre mixologista da BA Eventos de Maringá. Um cliente chamado ${formData.name} quer contratar o bar para um(a) ${formData.eventType} em ${formData.location} para ${formData.guests} convidados no dia ${formData.date}. 
       Responda de forma extremamente empolgada, informal e carinhosa (em Português do Brasil). Fale brevemente (3 linhas) sobre como a nossa estrutura impecável, decoração exclusiva e a arte do nosso bartender vão transformar o evento dele em algo inesquecível. Termine dizendo que ele deve clicar no botão abaixo para fecharmos os detalhes agora mesmo.`;
       
