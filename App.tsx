@@ -13,7 +13,6 @@ import {
   Award,
   Zap
 } from 'lucide-react';
-import { GoogleGenAI } from "@google/genai";
 import { LeadData } from './types';
 
 // Componentes Reutilizáveis
@@ -113,29 +112,12 @@ const App: React.FC = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    try {
-      const apiKey = process.env.GEMINI_API_KEY;
-      if (!apiKey) {
-        throw new Error("Chave de API (GEMINI_API_KEY) não configurada. Por favor, adicione-a nas variáveis de ambiente do Vercel.");
-      }
-      const ai = new GoogleGenAI({ apiKey });
-      const prompt = `Aja como o mestre mixologista da BA Eventos de Maringá. Um cliente chamado ${formData.name} quer contratar o bar para um(a) ${formData.eventType} em ${formData.location} para ${formData.guests} convidados no dia ${formData.date}. 
-      Responda de forma extremamente empolgada, informal e carinhosa (em Português do Brasil). Fale brevemente (3 linhas) sobre como a nossa estrutura impecável, decoração exclusiva e a arte do nosso bartender vão transformar o evento dele em algo inesquecível. Termine dizendo que ele deve clicar no botão abaixo para fecharmos os detalhes agora mesmo.`;
-      
-      const result = await ai.models.generateContent({
-        model: 'gemini-3-flash-preview',
-        contents: prompt
-      });
-      
-      setAiResponse(result.text || 'Gente, que notícia maravilhosa! Maringá vai tremer com esse evento. Nossa equipe já está polindo os cristais para o seu grande dia! Clique no botão abaixo para finalizarmos via WhatsApp.');
+    // Simulação de envio (sem IA conforme solicitado)
+    setTimeout(() => {
+      setAiResponse("Recebemos seu pedido com sucesso! Nossa equipe já está polindo os cristais para o seu grande dia. Clique no botão abaixo para finalizarmos os detalhes via WhatsApp.");
       setIsSuccess(true);
-    } catch (error) {
-      console.error("Erro ao enviar lead:", error);
-      setIsSuccess(true);
-      setAiResponse("Recebemos seu pedido! Segura a emoção que nossa equipe vai te chamar no WhatsApp para a gente planejar o bar mais incrível da sua vida.");
-    } finally {
       setIsSubmitting(false);
-    }
+    }, 1000);
   };
 
   const handleWhatsAppRedirect = () => {
