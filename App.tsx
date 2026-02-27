@@ -342,42 +342,42 @@ const App: React.FC = () => {
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
             <ExperienceCard 
               name="O Preparo" 
-              img="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b"
+              img="https://i.pinimg.com/736x/61/a3/ac/61a3ace90e82c2f8bc08d5f15608b184.jpg"
               desc="Mixologia técnica executada por profissionais que entendem de sabor e equilíbrio em cada gota."
             />
             <ExperienceCard 
               name="O Agito" 
-              img="https://images.unsplash.com/photo-1536935338788-846bb9981813"
+              img="https://i.pinimg.com/1200x/eb/a8/0e/eba80e92d129875bcf2ee4802a040af3.jpg"
               desc="A vibração do preparo ao vivo. Nossos bartenders trazem dinamismo e entretenimento para o seu bar."
             />
             <ExperienceCard 
               name="A Elegância" 
-              img="https://images.unsplash.com/photo-1575444758702-4a6b9222336e"
+              img="https://lh3.googleusercontent.com/d/1Jk_Xvtwztiurhi8bKmZpTvXILBtNHzM4"
               desc="Bartenders rigorosamente uniformizados e treinados para um serviço de classe mundial em qualquer ocasião."
             />
             <ExperienceCard 
               name="A Guarnição" 
-              img="https://images.unsplash.com/photo-1595981267035-7b04ca84a82d"
+              img="https://i.pinimg.com/736x/7c/b8/9c/7cb89cf145822c47473cf2ea7ad27dd1.jpg"
               desc="Estética impecável. Utilizamos insumos selecionados e finalizações que tornam cada drink uma obra de arte."
             />
             <ExperienceCard 
               name="A Chama" 
-              img="https://images.unsplash.com/photo-1574096079513-d8259312b785"
+              img="https://i.pinimg.com/736x/f9/91/63/f99163e7d15a43fee1a90fe9ea03ea46.jpg"
               desc="Técnicas avançadas de aromatização e defumação para surpreender os paladares mais exigentes."
             />
             <ExperienceCard 
               name="O Visual" 
-              img="https://images.unsplash.com/photo-1470337458703-46ad1756a187"
+              img="https://i.pinimg.com/736x/88/a7/30/88a73088d335ad1508ccda5215a8b548.jpg"
               desc="Mobiliário e decoração própria. Montamos um bar completo que complementa a estética do seu evento."
             />
              <ExperienceCard 
               name="A Atitude" 
-              img="https://images.unsplash.com/photo-1510626176961-4b57d4fbad03"
+              img="https://lh3.googleusercontent.com/d/1nx3cIVMWvTzygmO3xNxdaaOQV20k5OJk"
               desc="Hospitalidade é o nosso DNA. Atendimento focado no acolhimento e na satisfação total de cada convidado."
             />
             <ExperienceCard 
               name="O Brinde" 
-              img="https://images.unsplash.com/photo-1556679343-c7306c1976bc"
+              img="https://i.pinimg.com/1200x/98/7c/75/987c75629b9b90d24e7b89240a02d886.jpg"
               desc="Excelência do início ao fim. Sua única preocupação será aproveitar a festa e celebrar os bons momentos."
             />
           </div>
